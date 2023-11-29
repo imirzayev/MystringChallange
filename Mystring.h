@@ -15,12 +15,14 @@ public:
     Mystring();
     Mystring(const char *s);
 
+//    Copy
     Mystring(const Mystring &mystr);
+//    Move
     Mystring(Mystring &&mystr);
 
     ~Mystring();
 
-    Mystring &operator-();
+    Mystring operator-();
 };
 
 #endif //OPERATOROVERLOADING_MYSTRING_H

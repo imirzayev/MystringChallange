@@ -30,7 +30,16 @@ Mystring::Mystring(const char *s)
 
 Mystring::Mystring(const Mystring &mystr)
 :str{nullptr}{
+    char *tmp = new char[strlen(mystr.str) + 1];
+    strcpy(tmp, mystr.str);
+    str = tmp;
     cout << "Copied the object " << mystr << " with copy constructor" << endl;
+}
+
+Mystring::Mystring(Mystring &&mystr)
+:str{mystr.str}{
+    cout << "Moved the object " << mystr.str << '\n';
+    mystr.str = nullptr;
 }
 
 Mystring::~Mystring() {
@@ -43,12 +52,16 @@ std::ostream &operator<<(std::ostream &os, const Mystring &mystr) {
     return os;
 }
 
-Mystring &Mystring::operator-() {
+Mystring Mystring::operator-() {
     char *buff = new char[strlen(str) + 1];
-    for(int i = 0; i < strlen(str); i++) {
-        *(buff+i) = tolower(*(str+i));
+    strcpy(buff, str);
+
+    for(int i = 0; i < strlen(buff); i++) {
+        *(buff+i) = tolower(*(buff+i));
     }
 
-    str = buff;
-    buff = nullptr;
+    Mystring temp{buff};
+
+    delete [] buff;
+    return temp;
 }

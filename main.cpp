@@ -1,12 +1,22 @@
 #include <iostream>
 #include "Mystring.h"
 
+using namespace std;
+
+
 int main() {
-    Mystring();
+//    Mystring();
     Mystring s("Salam Qaqa");
     Mystring t(s);
+    {
+        vector<Mystring> my_vec{};
+        my_vec.push_back(Mystring("Salam"));
+    }
 
-    Mystring lower;
-    std::cout << "Negative " << -s << std::endl;
+//    Mystring lower;
+//    cout << "Negative " << -s << std::endl;
+
+return 0;
 
 }
+
