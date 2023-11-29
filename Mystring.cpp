@@ -43,8 +43,13 @@ Mystring::Mystring(Mystring &&mystr)
 }
 
 Mystring::~Mystring() {
-    cout << "Removed the object " << str << endl;
-    delete [] str;
+    if (str != nullptr) {
+        cout << "Removed the object " << str << endl;
+        delete[] str;
+    }
+    else
+        cout << "Nullptr object removal" << endl;
+
 }
 
 std::ostream &operator<<(std::ostream &os, const Mystring &mystr) {
