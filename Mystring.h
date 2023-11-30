@@ -23,6 +23,9 @@ public:
     ~Mystring();
 
     Mystring operator-();
+
+    Mystring &operator=(const Mystring &rhs);
+    Mystring &operator=(Mystring &&rhs);
 };
 
 #endif //OPERATOROVERLOADING_MYSTRING_H

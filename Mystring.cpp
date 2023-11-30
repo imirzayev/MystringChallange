@@ -70,3 +70,26 @@ Mystring Mystring::operator-() {
     delete [] buff;
     return temp;
 }
+
+Mystring &Mystring::operator=(const Mystring &rhs) {
+    if(this == &rhs)
+        return *this;
+
+    delete [] str;
+    str = new char[strlen(rhs.str) + 1];
+    strcpy(str, rhs.str);
+
+    cout << "Copy Assignment for " << rhs << '\n';
+    return *this;
+}
+
+Mystring &Mystring::operator=(Mystring &&rhs) {
+    if(this == &rhs)
+        return *this;
+
+    cout << "Move assignment on " << rhs << '\n';
+
+    this->str = rhs.str;
+    rhs.str = nullptr;
+    return *this;
+}
