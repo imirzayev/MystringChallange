@@ -7,6 +7,7 @@
 
 class Mystring {
     friend std::ostream &operator<<(std::ostream &os, const Mystring &obj);
+    friend std::istream &operator>>(std::istream &is, Mystring &obj);
 
 private:
     char *str;
@@ -22,10 +23,20 @@ public:
 
     ~Mystring();
 
-    Mystring operator-();
 
     Mystring &operator=(const Mystring &rhs);
     Mystring &operator=(Mystring &&rhs);
+
+    Mystring operator-();
+    bool operator==(Mystring &rhs) const;
+    bool operator!=(Mystring &rhs) const;
+    bool operator<(Mystring &rhs) const;
+    Mystring operator+(Mystring &rhs);
+    Mystring &operator+=(Mystring &rhs);
+    Mystring operator*(int num);
+    Mystring &operator*=(int num);
+    Mystring &operator++();
+    Mystring operator++(int);
 };
 
 #endif //OPERATOROVERLOADING_MYSTRING_H
